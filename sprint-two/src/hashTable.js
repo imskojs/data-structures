@@ -32,7 +32,7 @@ HashTable.prototype.retrieve = function(k){
       return bucket[i][1];
     }
   }
-  return null
+  return null;
 };
 
 HashTable.prototype.remove = function(k){
@@ -51,32 +51,31 @@ HashTable.prototype.remove = function(k){
       bucket.splice(i);
     }
   }
+};
 
-  HashTable.prototype.resize = function (limit) {
-    var newLimitedArray = LimitedArray(limit);
+HashTable.prototype.resize = function (limit) {
+  var newLimitedArray = LimitedArray(limit);
 
-    var oldStorage = [];
+  var oldStorage = [];
 
-    this._storage.each(function (bucket, i, storage){
-      oldStorage.push(bucket);
-    });
+  this._storage.each(function (bucket, i, storage){
+    oldStorage.push(bucket);
+  });
 
-    this._storage = newLimitedArray;
-    this.count = 0;
+  this._storage = newLimitedArray;
+  this.count = 0;
 
-    for(var i = 0; i < oldStorage.length; i++){
-      if(oldStorage[i] !== undefined){
-        for(var j = 0; j < oldStorage[i].length; j++){
-          var key = oldStorage[i][j][0];
-          var val = oldStorage[i][j][1];
-          this.insert(key, val);
-        }
+  for(var i = 0; i < oldStorage.length; i++){
+    if(oldStorage[i] !== undefined){
+      for(var j = 0; j < oldStorage[i].length; j++){
+        var key = oldStorage[i][j][0];
+        var val = oldStorage[i][j][1];
+        this.insert(key, val);
       }
     }
-
-    delete oldStorage;
-
   }
+
+  delete oldStorage;
 
 };
 
