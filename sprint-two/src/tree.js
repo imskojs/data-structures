@@ -1,15 +1,11 @@
 var Tree = function(value){
   var newTree = {};
   newTree.value = value;
-
-  // your code here
-  newTree.children = [];  // fix me << []
-
+  newTree.children = [];
   _.extend(newTree, treeMethods);
 
   return newTree;
 };
-
 
 var treeMethods = {};
 
@@ -18,10 +14,8 @@ treeMethods.addChild = function(value){
   this.children.push(tree);
 };
 
-
 treeMethods.contains = function(target){
   function diver (tree) {
-
     if (tree.value === target) {
       return true;
     } else {
@@ -34,28 +28,5 @@ treeMethods.contains = function(target){
       return false;
     }
   }
-  
   return diver(this);
 };
-
-
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
-
-/*
- var baseTree = Tree();
- baseTree.value = 0;
- baseTree.addChild(3);
-
- var childTree = Tree();
- childTree.value = 3;
-
-
-baseTree = {
-  value: 0
-  children: [childTree, childTree]
-}
-*/
-
