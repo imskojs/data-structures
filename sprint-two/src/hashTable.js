@@ -6,36 +6,36 @@ var HashTable = function(){
 
 };
 
-HashTable.prototype.insert = function(k, v){
-  this.count++;
+// HashTable.prototype.insert = function(k, v){
+//   this.count++;
 
-  if ( (this.count / this._limit) >= 0.75) {
-    this._limit *= 2;
-    this.resize(this._limit);
-  }
+//   if ( (this.count / this._limit) >= 0.75) {
+//     this._limit *= 2;
+//     this.resize(this._limit);
+//   }
 
-  var i = getIndexBelowMaxForKey(k, this._limit);
-  var bucket = this._storage.get(i);
-  var found = false;
+//   var i = getIndexBelowMaxForKey(k, this._limit);
+//   var bucket = this._storage.get(i);
+//   var found = false;
 
-  if (bucket === undefined) {
-    this._storage.set(i, []);
-    bucket.push([k,v]);
-  } else {
-    for(var j = 0; j < bucket.length; j++){
-      var tuple = bucket[j]
-      if(tuple[0] === k){
-        found = true;
-        tuple[1] = v;
-        break;
-      }
-    }
-  }
+//   if (bucket === undefined) {
+//     this._storage.set(i, []);
+//     bucket.push([k,v]);
+//   } else {
+//     for(var j = 0; j < bucket.length; j++){
+//       var tuple = bucket[j]
+//       if(tuple[0] === k){
+//         found = true;
+//         tuple[1] = v;
+//         break;
+//       }
+//     }
+//   }
 
-  if (!found) {
-    bucket.push([k,v])
-  };
-};
+//   if (!found) {
+//     bucket.push([k,v])
+//   };
+// };
 
 
 HashTable.prototype.insert = function(k, v){
